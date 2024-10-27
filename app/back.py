@@ -35,7 +35,7 @@ def process_pass_two(srccode, optab):
         if len(parts) == 0:
             continue
 
-        # Handle START directive to set the starting address
+       
         if len(parts) > 1 and parts[1] == "START":
             start_address = int(parts[2])
             current_address = start_address  # Set the current address to the start address
