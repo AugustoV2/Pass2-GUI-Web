@@ -10,10 +10,10 @@ export default function Home() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // Define ResultType interface with specific types
+
   interface ResultType {
     intermediate_file: string[];
-    symtab: Record<string, string | number>; // Assuming symbols can map to strings or numbers
+    symtab: Record<string, string | number>; 
     object_code: string[];
   }
 
@@ -67,7 +67,7 @@ export default function Home() {
           Pass 2 Processor
         </h1>
         <a
-          href="https://github.com/your-repo-link" // replace with your actual GitHub repository link
+          href="https://github.com/AugustoV2/Pass2-GUI-Web/tree/master/input%2Copcode.txt" 
           target="_blank"
           rel="noopener noreferrer"
           className="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-gray-100 font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
