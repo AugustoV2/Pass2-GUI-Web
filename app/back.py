@@ -38,56 +38,56 @@ def process_pass_two(srccode, optab):
        
         if len(parts) > 1 and parts[1] == "START":
             start_address = int(parts[2])
-            current_address = start_address  # Set the current address to the start address
+            current_address = start_address 
             intermediate_file.append(f"{current_address:04X} - {parts[1]} {parts[2]}")
-            current_address += 3  # Increment address for START directive (optional)
+            current_address += 3  
             continue
 
-        # Only process if START was defined
+       
         if current_address is not None:
-            # If there's a label
+           
             if parts[0] != '-':
                 label = parts[0]
-                symtab[label] = current_address  # Store the label in symbol table
+                symtab[label] = current_address  
 
                 if len(parts) > 1:
                     opcode = parts[1]
-                    if opcode in optab:  # Check if opcode exists in the optab
+                    if opcode in optab: 
                         object_code.append(optab[opcode])
                         intermediate_file.append(f"{current_address:04X} {label} - {opcode} {parts[2]}")
-                        current_address += 3  # Increment address for standard instruction length
+                        current_address += 3 
 
                     else:
-                        # Handle directives like BYTE, WORD, RESB, RESW
+                       
                         if opcode == "BYTE":
                             intermediate_file.append(f"{current_address:04X} {label} {opcode} {parts[2]}")
-                            current_address += len(parts[2]) - 2  # Adjust address for BYTE
+                            current_address += len(parts[2]) - 2  
                         elif opcode == "WORD":
                             intermediate_file.append(f"{current_address:04X} {label} {opcode} {parts[2]}")
-                            current_address += 3  # Increment by 3 for WORD
+                            current_address += 3 
                         elif opcode == "RESB":
                             intermediate_file.append(f"{current_address:04X} {label} {opcode} {parts[2]}")
-                            current_address += int(parts[2])  # Increment by RESB size
+                            current_address += int(parts[2]) 
                         elif opcode == "RESW":
                             intermediate_file.append(f"{current_address:04X} {label} {opcode} {parts[2]}")
-                            current_address += 3 * int(parts[2])  # Increment by 3 times RESW size
-            else:  # If there is no label
+                            current_address += 3 * int(parts[2])  
+            else:  
                 opcode = parts[1]
                 if opcode in optab:
                     object_code.append(optab[opcode])
                     intermediate_file.append(f"{current_address:04X} - {opcode} {parts[2]}")
-                    current_address += 3  # Increment address for standard instruction length
+                    current_address += 3 
 
-    # Append END to the intermediate file
+   
     if current_address is not None:
         intermediate_file.append(f"{current_address:04X} - END -")  
 
-    # Prepare object code output
+    
     object_code_output = []
     if start_address is not None and current_address is not None:
-        object_code_output.append(f"H COPY {start_address:06X} {current_address:06X}")  # Header with start and end address
-        object_code_output.append(f"T {start_address:06X} {' '.join(object_code)}")  # Text record with object code
-        object_code_output.append(f"E {start_address:06X}")  # End record
+        object_code_output.append(f"H COPY {start_address:06X} {current_address:06X}") 
+        object_code_output.append(f"T {start_address:06X} {' '.join(object_code)}")  
+        object_code_output.append(f"E {start_address:06X}") 
 
     return {
         "intermediate_file": intermediate_file,

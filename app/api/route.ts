@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
       
         if ('error' in result) {
-            return NextResponse.json(result, { status: 500 }); // Return error response
+            return NextResponse.json(result, { status: 500 }); 
         }
 
        
@@ -60,6 +60,6 @@ async function runCode(inputFileContent: string): Promise<ResponseResult | { err
         return result;
     } catch (error) {
         console.error('Error:', error);
-        return { error: (error as Error).message }; // Return error as an object
+        return { error: (error as Error).message }; 
     }
 }
