@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
 
 async function runCode(inputFileContent: string): Promise<ResponseResult | { error: string }> {
     try {
-        const response = await fetch('https://running-krill-augustov-d8e56e16.koyeb.app/pass1', {
+        const response = await fetch('https://institutional-lizzy-blaaaaug-4dc80d8d.koyeb.app/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
