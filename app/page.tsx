@@ -62,7 +62,19 @@ export default function Home() {
 
   return (
     <div className="p-8 max-w-4xl mx-auto bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-gray-100 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">Pass 2 Processor</h1>
+      <div className="flex items-center justify-between">
+        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+          Pass 2 Processor
+        </h1>
+        <a
+          href="https://github.com/your-repo-link" // replace with your actual GitHub repository link
+          target="_blank"
+          rel="noopener noreferrer"
+          className="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-gray-100 font-semibold rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          GitHub Repo
+        </a>
+      </div>
       
       <form onSubmit={handleSubmit} className="space-y-8">
         <div className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 p-6 rounded-lg shadow-md">
