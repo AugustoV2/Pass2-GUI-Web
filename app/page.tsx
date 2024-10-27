@@ -10,9 +10,10 @@ export default function Home() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  // Define ResultType interface with specific types
   interface ResultType {
     intermediate_file: string[];
-    symtab: Record<string, any>;
+    symtab: Record<string, string | number>; // Assuming symbols can map to strings or numbers
     object_code: string[];
   }
 
