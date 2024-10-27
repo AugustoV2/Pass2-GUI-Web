@@ -49,7 +49,7 @@ export default function Home() {
         optab: optabObject
       };
 
-      const response = await axios.post('http://127.0.0.1:5000/', payload);
+      const response = await axios.post('https://institutional-lizzy-blaaaaug-4dc80d8d.koyeb.app/', payload);
       setResult(response.data);
       setError('');
     } catch (err) {
